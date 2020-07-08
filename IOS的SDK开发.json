@@ -1,8 +1,15 @@
 1.Xcode创建FrameWork工程,设置ios版本为10.3,选择Edit Scheme设置Run为Release,设置Mach-O Type为Static Library
+
 2.实现功能
+
 3.分别Command+Build编译模拟器版本和General版本
+
 4.合并2个framework后替换Release-iphone中的文件,命令如下
 lipo -create xxx1.framework/xxx1  xxx2.framework/xxx1 -output new
+
 5.提取出Release-iphone中的xxx1.framework为最终framework
+
 6.若需要合并framework,使用如下命令(合并后的framework无法引用头文件)
 libtool -static -o new1.framework xxx3.framework/xxx3  xxx4.framework/xxx4
+
+7.若需要引入头文件,2个framework不能合并
